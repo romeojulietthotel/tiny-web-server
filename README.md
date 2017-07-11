@@ -1,16 +1,13 @@
 A tiny web server in C
 ======================
 
-I am reading
-[Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/).
-It teachers me how to write a tiny web server in C.
+Slightly modified fork, to address some build warnings and compile by
+default with clang but also added a build target that uses gcc. And
+additionally strip the binary. Have done very little testing of this
+server but the basics seem to work.
 
-I have written another
-[tiny web server](https://github.com/shenfeng/nio-httpserver) in JAVA.
-
-And another one [http-kit](https://github.com/http-kit/http-kit), http-kit is full featured, with websocket and async support
-
-And few others on my github page.
+I am always curious to look at small webservers that can be run quickly
+and use very few resources.
 
 Features
 --------
@@ -25,13 +22,20 @@ Features
 Non-features
 ------------
 
-1. No security check
+1. This server is meant to be run on a trusted network and accessed only by
+trusted clients. So there are no thoughts here to make it secure or operate
+via TLS, etc., etc., etc. Running it on a public internet would be a dumb thing
+to do.
 
 Usage
 -----
 
-`tiny <port>`, opens a server in the current directory, port
-default to 9999, just like `python -m SimpleHTTPServer`
+`tiny <port>`, starts a server in the current directory, port
+defaults to 9999. This server is meant to be similar to running
+`python2 -m SimpleHTTPServer` or
+`python3 -m http.server`
+
+Then point your browser at http://0.0:9999
 
 I use it as a lightweight File Browser.
 
@@ -39,7 +43,8 @@ I use it as a lightweight File Browser.
 TODO
 ----
 
-1. Write a epoll version
+1. Write an epoll version.
+2. Add file upload ability.
 
 
 License
